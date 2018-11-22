@@ -24,7 +24,7 @@ public class BookController {
     @ResponseBody
     public String toBookIndex(HttpServletRequest request, Model model){
 
-        return "Hi, I'm Book! Nice to meet you~ 合作愉快";
+        return "Hi, I'm Book! Nice to meet you~ 合作愉快。我创建了一个分支呢，你看看";
     }
 
     @RequestMapping("/test1")
