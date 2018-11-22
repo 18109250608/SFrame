@@ -1,0 +1,80 @@
+# Server configuration
+server:
+  port: 8090
+
+#开发配置
+spring:
+  profiles:
+    active: dev
+
+  devtools:
+    remote:
+      secret: thisismysecret
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  data:
+    mongodb:
+      primary:
+        host: 127.0.0.1
+        port: 27017
+        database: test
+    #  secondary:
+    #    host: 192.168.9.60
+    #    port: 20000
+    #    database: test1
+
+  #    # 全文检索 elasticsearch
+  #    elasticsearch:
+  #      cluster-name: elasticsearch #节点名称
+  #      cluster-nodes: 127.0.0.1:9300 #节点地址
+  #      repositories:
+  #        enabled: true
+
+##mybatis mapperLocations指的路径是src/main/resources
+#mybatis:
+#  typeAliasesPackage: com.demo.entity
+#  mapperLocations: classpath:mapper/*.xml
+
+#mybatis-plus
+mybatis-plus:
+  typeAliasesPackage: com.demo.entity
+  mapperLocations: classpath:mapper/*Mapper.xml
+
+
+
+###################  自定义项目配置 ###################
+xncoding:
+  socket-hostname: localhost
+#  socket-port: 9090
+
+# JWT
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+      register: "auth/register"
+
+#logging:
+#  level:
+#    org.springframework:
+#      data: DEBUG
+#      security: DEBUG
+
+

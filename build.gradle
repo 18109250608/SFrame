@@ -26,5 +26,29 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
+    // REST API
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.0.RELEASE'
+    // 关系型数据库mysql
+    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.3.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
+    compile group: 'com.alibaba', name: 'druid', version: '1.1.10'
+    // mybatis-plus
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.0.5'
+
+    // 非关系型数据库mongodb
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.1.0.RELEASE'
+    // 
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+
+    // 使用 JWT 和 Spring Security 保护 REST API
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
+    // ElasticSearch，实现全文搜索
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.1.0.RELEASE'
+    compile group: 'org.elasticsearch', name: 'elasticsearch', version: '6.4.3'
+
+
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
