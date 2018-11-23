@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `student`(
+   `id` INT UNSIGNED AUTO_INCREMENT,
+   `name` VARCHAR(100) NOT NULL,
+   `school` VARCHAR(40) NOT NULL,
+   `indate` DATE,
+   PRIMARY KEY ( `id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

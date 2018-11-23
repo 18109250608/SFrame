@@ -2,6 +2,17 @@
 server:
   port: 8090
 
+###################  自定义项目配置 ###################
+selfDefine:
+  author: mzh
+  msgStart: Hello
+  msgEnd: Bye-bye
+
+xncoding:
+  socketHostname: localhost
+#  socket-port: 9090
+
+
 #开发配置
 spring:
   profiles:
@@ -17,19 +28,28 @@ spring:
     cache: false
 
   datasource:
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://192.168.1.199:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
-    password: rootroot
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
 
   data:
     mongodb:
-      primary:
-        host: 127.0.0.1
-        port: 27017
-        database: test
+      host: 192.168.1.199
+      port: 27017
+      database: test
+      username: test
+      password: test
+#      # 多数据源做下面的设置
+#      primary:
+#        uri:  mongodb://192.168.1.199:27017/test
+#        host: 192.168.1.199
+#        port: 27017
+#        database: test
+#        username: admin
+#        password: admin
     #  secondary:
     #    host: 192.168.9.60
     #    port: 20000
@@ -52,12 +72,6 @@ mybatis-plus:
   typeAliasesPackage: com.demo.entity
   mapperLocations: classpath:mapper/*Mapper.xml
 
-
-
-###################  自定义项目配置 ###################
-xncoding:
-  socket-hostname: localhost
-#  socket-port: 9090
 
 # JWT
 jwt:

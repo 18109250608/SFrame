@@ -1,4 +1,4 @@
-package com.demo.secruity;
+package com.demo.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.core.incrementer.IKeyGenerator;

@@ -27,7 +27,7 @@ public class BookMapperTest extends DemoApplicationTests {
     @Rollback
     public void testSelectByName() throws Exception {
         Book u = bookMapper.selectByName("饥饿的盛世");
-        Assert.assertSame("获得书籍价格",20.7, u.getPrice());
+        Assert.assertSame("获得书籍价格",(Object)20.7, (Object)u.getPrice());
     }
 
     // 忽略注解, 可以忽略方法，也可以忽略类哦~~
