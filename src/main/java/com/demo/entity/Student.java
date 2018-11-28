@@ -1,12 +1,14 @@
 package com.demo.entity;
 
+
+import java.time.LocalDateTime;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
 
 /**
  * <p>
@@ -14,26 +16,38 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author mzh
- * @since 2018-11-27
+ * @since 2018-11-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Book implements Serializable {
+public class Student {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 主键ID， 自动生成缺@TableId
+     */
     @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-
-    private String no;
+    private Long id;
 
     private String name;
 
-    private Float price;
+    private Integer age;
 
-    @TableField("category_id")
-    private Integer categoryId;
+    private Integer sex;
+
+    private String createBy;
+
+    private LocalDateTime createDate;
+
+    private String updateBy;
+
+    private LocalDateTime updateDate;
+
+    private String remarks;
+
+    private String delFlag;
 
 
 }

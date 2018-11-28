@@ -1,7 +1,7 @@
 package com.demo.controller;
 
 import com.demo.entity.Todo;
-import com.demo.service.TodoService;
+import com.demo.service.ITodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/todos")
 @PreAuthorize("hasRole('USER')")
 public class TodoController {
-    private TodoService service;
+    private ITodoService service;
 
     @RequestMapping("test")
     public String test() {
@@ -25,7 +25,7 @@ public class TodoController {
 
 
     @Autowired
-    public TodoController(TodoService service){
+    public TodoController(ITodoService service){
         this.service = service;
     }
 

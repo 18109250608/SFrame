@@ -1,7 +1,8 @@
-package com.demo.service;
+package com.demo.service.impl;
 
 import com.demo.entity.Todo;
 import com.demo.repository.TodoRepository;
+import com.demo.service.ITodoService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MongoTodoServiceImpl implements TodoService{
+public class MongoTodoServiceImpl implements ITodoService {
     private final TodoRepository repository;
 
     @Autowired

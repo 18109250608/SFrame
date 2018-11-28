@@ -1,13 +1,20 @@
 package com.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.demo.entity.Book;
+import com.demo.entity.Category;
+import com.demo.vo.BookCategroyVo;
+import javafx.scene.control.Pagination;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.Map;
 
-@Mapper
 public interface BookMapper extends BaseMapper<Book> {
     List<Book> getBookList();
 
@@ -15,13 +22,10 @@ public interface BookMapper extends BaseMapper<Book> {
 
     Book selectByName(String name);
 
-//    @Select("SELECT * FROM BOOK WHERE NAME = #{name}")
-//    Book findByName(@Param("name") String name);
-//
-//    @Insert("INSERT INTO BOOK(NO, NAME, PRICE) VALUES(#{no}, #{name}, #{price})")
-    int insert(@Param("id") int id,
-               @Param("no") String no,
-               @Param("name") String name,
-               @Param("price") Float price);
+    // 多表联合查询
+    // 多参数情况下要加@Param说明
+    Page<BookCategroyVo> selectBookByCategory(Page<BookCategroyVo> page,
+                                              @Param("name") String categoryName);
+
 
 }

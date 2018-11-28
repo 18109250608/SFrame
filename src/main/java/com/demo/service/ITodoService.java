@@ -4,7 +4,7 @@ import com.demo.entity.Todo;
 
 import java.util.List;
 
-public interface TodoService {
+public interface ITodoService {
     Todo addTodo(Todo todo);
     Todo deleteTodo(String id);
     List<Todo> findAll(String userId);

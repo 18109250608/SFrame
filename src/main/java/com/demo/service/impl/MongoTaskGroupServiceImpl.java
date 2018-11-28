@@ -1,21 +1,23 @@
-package com.demo.service;
+package com.demo.service.impl;
 
 import com.demo.entity.Project;
 import com.demo.entity.TaskGroup;
 import com.demo.repository.TaskGroupRepository;
+import com.demo.service.IProjectService;
+import com.demo.service.ITaskGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MongoTaskGroupServiceImpl implements TaskGroupService{
+public class MongoTaskGroupServiceImpl implements ITaskGroupService {
 
     private TaskGroupRepository repository;
-    private ProjectService projectService;
+    private IProjectService projectService;
 
     @Autowired
     public MongoTaskGroupServiceImpl(
             TaskGroupRepository repository,
-            ProjectService projectService){
+            IProjectService projectService){
         this.repository = repository;
         this.projectService = projectService;
     }

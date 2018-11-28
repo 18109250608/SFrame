@@ -2,85 +2,102 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.demo.mapper.BookMapper" >
     <resultMap id="BaseResultMap" type="com.demo.entity.Book" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="no" property="no" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="REAL" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, no, name, price
-  </sql>
-  <select id="getBookList" resultMap="BaseResultMap">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="no" property="no" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="REAL" />
+    </resultMap>
+
+    <resultMap id="BookCatrgoryMap" type="com.demo.vo.BookCategroyVo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="no" property="no" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="REAL" />
+        <result column="categoryName" property="categoryName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+      id, no, name, price
+    </sql>
+
+
+    <select id="getBookList" resultMap="BaseResultMap">
         SELECT  * FROM book
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from book
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from book
-    where name = #{name,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from book
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-    <insert id="insert" parameterType="com.demo.entity.Book" >
-    insert into book (id, no, name,
-      price)
-    values (#{id,jdbcType=INTEGER}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
-      #{price,jdbcType=REAL})
-  </insert>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from book
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectBookByCategory" resultMap="BookCatrgoryMap" parameterType="java.lang.String" >
+        select
+        b.id, b.no, b.name, b.price, c.name as categoryName
+        from book b
+        LEFT JOIN category c ON b.category_id = c.category_id
+        where c.name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from book
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+      delete from book
+      where id = #{id,jdbcType=INTEGER}
+    </delete>
+
     <insert id="insertSelective" parameterType="com.demo.entity.Book" >
-    insert into book
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="no != null" >
-        no,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="price != null" >
-        price,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="no != null" >
-        #{no,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        #{price,jdbcType=REAL},
-      </if>
-    </trim>
-  </insert>
+        insert into book
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="no != null" >
+                no,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="price != null" >
+                price,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="no != null" >
+                #{no,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null" >
+                #{price,jdbcType=REAL},
+            </if>
+        </trim>
+    </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.demo.entity.Book" >
-    update book
-    <set >
-      <if test="no != null" >
-        no = #{no,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        price = #{price,jdbcType=REAL},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update book
+        <set >
+            <if test="no != null" >
+                no = #{no,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null" >
+                price = #{price,jdbcType=REAL},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <update id="updateByPrimaryKey" parameterType="com.demo.entity.Book" >
     update book
     set no = #{no,jdbcType=VARCHAR},

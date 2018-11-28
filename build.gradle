@@ -34,6 +34,10 @@ dependencies {
     compile group: 'com.alibaba', name: 'druid', version: '1.1.10'
     // mybatis-plus
     compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.0.5'
+    compile group: 'com.baomidou', name: 'mybatis-plus', version: '3.0.5'
+    compile group: 'org.apache.velocity', name: 'velocity-engine-core', version: '2.0'
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
+
 
     // 非关系型数据库mongodb
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.1.0.RELEASE'
@@ -47,6 +51,10 @@ dependencies {
     // ElasticSearch，实现全文搜索
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.1.0.RELEASE'
     compile group: 'org.elasticsearch', name: 'elasticsearch', version: '6.4.3'
+
+    // swagger2接口文档进行在线维护
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 
 
 

@@ -1,7 +1,7 @@
 package com.demo.controller;
 
 import com.demo.entity.Project;
-import com.demo.service.ProjectService;
+import com.demo.service.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("hasRole('USER')")
 public class ProjectController {
 
-    private ProjectService service;
+    private IProjectService service;
 
     @Autowired
-    public ProjectController(ProjectService service){
+    public ProjectController(IProjectService service){
         this.service = service;
     }
 

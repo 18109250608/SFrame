@@ -1,7 +1,7 @@
 package com.demo.controller;
 
 import com.demo.entity.TaskGroup;
-import com.demo.service.TaskGroupService;
+import com.demo.service.ITaskGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("hasRole('USER')")
 public class TaskGroupController {
 
-    private TaskGroupService service;
+    private ITaskGroupService service;
 
     @Autowired
-    public TaskGroupController(TaskGroupService service){
+    public TaskGroupController(ITaskGroupService service){
         this.service = service;
     }
 

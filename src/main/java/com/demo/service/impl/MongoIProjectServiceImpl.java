@@ -1,4 +1,4 @@
-package com.demo.service;
+package com.demo.service.impl;
 
 import com.demo.entity.Project;
 import com.demo.entity.TaskGroup;
@@ -6,6 +6,7 @@ import com.demo.entity.User;
 import com.demo.repository.MongoProjectRepository;
 import com.demo.repository.TaskGroupRepository;
 import com.demo.repository.UserRepository;
+import com.demo.service.IProjectService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,13 +16,13 @@ import org.springframework.stereotype.Service;
 import static java.util.Arrays.asList;
 
 @Service
-public class MongoProjectServiceImpl implements ProjectService {
+public class MongoIProjectServiceImpl implements IProjectService {
     final MongoProjectRepository repository;
     final UserRepository userRepository;
     final TaskGroupRepository taskGroupRepository;
 
     @Autowired
-    public MongoProjectServiceImpl(
+    public MongoIProjectServiceImpl(
             MongoProjectRepository repository,
             UserRepository userRepository,
             TaskGroupRepository taskGroupService){

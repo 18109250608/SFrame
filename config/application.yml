@@ -9,7 +9,7 @@ selfDefine:
   msgEnd: Bye-bye
 
 xncoding:
-  socketHostname: localhost
+#  socketHostname: localhost
 #  socket-port: 9090
 
 
@@ -34,6 +34,20 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    spring.datasource.filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
   data:
     mongodb:
@@ -71,6 +85,16 @@ spring:
 mybatis-plus:
   typeAliasesPackage: com.demo.entity
   mapperLocations: classpath:mapper/*Mapper.xml
+  globalConfig:
+    idType: 3  #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    dbColumnUnderline: false
+    refresh: true
+  configuration:
+    mapUnderscoreToCamelCase: true
+    cacheEnabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    logImpl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
 
 
 # JWT
@@ -91,4 +115,43 @@ jwt:
 #      data: DEBUG
 #      security: DEBUG
 
-
+swagger:
+  # 公共信息
+  enabled: true
+  title: java整合demo
+  description: 一个Swagger测试项目
+  version: 0.1-SNAPSHOT
+  # 许可证及服务条款信息
+  license:
+  licenseUrl:
+  termsOfServiceUrl:
+  contact:
+    name: mzh
+    url:
+    email: xxx@gmail.com
+  basePackage: com.demo
+#  globalOperationParameters[0]:
+#    name: TOKEN
+#    description: 鉴权
+#    modelRef: string
+#    parameterType: header
+#    # 公共参数写成requierd, 对于不需要登录的接口随便写一个字符串即可
+#    required: true
+#    # 通用返回错误码
+#    applyDefaultResponseMessages: true
+#    globalResponseMessage.get[0]:
+#      code: 401
+#      message: 401错误
+#    globalResponseMessage.get[1]:
+#      code: 500
+#      message: 后端错误
+#      modelRef: ERROR
+#  docket:
+#    apiForMe:
+#      title: Myself
+#      description: 开放给自己的接口
+#      base-path: /api/myself/**
+#    apiForOthers:
+#      title: Others
+#      description: 作为其他人的接口
+#      base-path: /api/others/**
