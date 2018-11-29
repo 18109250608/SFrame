@@ -98,16 +98,16 @@ mybatis-plus:
 
 
 # JWT
-jwt:
-  header: Authorization
-  secret: mySecret
-  expiration: 604800
-  tokenHead: "Bearer "
-  route:
-    authentication:
-      path: auth
-      refresh: refresh
-      register: "auth/register"
+#jwt:
+#  header: Authorization
+#  secret: mySecret
+#  expiration: 604800
+#  tokenHead: "Bearer "
+#  route:
+#    authentication:
+#      path: auth
+#      refresh: refresh
+#      register: "auth/register"
 
 #logging:
 #  level:

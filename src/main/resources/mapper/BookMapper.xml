@@ -6,6 +6,7 @@
         <result column="no" property="no" jdbcType="VARCHAR" />
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="price" property="price" jdbcType="REAL" />
+        <result column="category_id" property="price" jdbcType="REAL" />
     </resultMap>
 
     <resultMap id="BookCatrgoryMap" type="com.demo.vo.BookCategroyVo" >
@@ -17,7 +18,7 @@
     </resultMap>
 
     <sql id="Base_Column_List" >
-      id, no, name, price
+      id, no, name, price, category_id as categoryId
     </sql>
 
 

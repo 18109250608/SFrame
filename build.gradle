@@ -44,9 +44,9 @@ dependencies {
     // 
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
 
-    // 使用 JWT 和 Spring Security 保护 REST API
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
-    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+//    // 使用 JWT 和 Spring Security 保护 REST API
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.0.RELEASE'
+//    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
     // ElasticSearch，实现全文搜索
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.1.0.RELEASE'

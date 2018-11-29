@@ -16,7 +16,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan(basePackages = {"com.demo.controller"})
 public class Swagger2Config {
 //    @Value("${swagger2.enable}") private boolean enable;
 
@@ -26,7 +25,8 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
 //                .groupName("用户模块")
                 .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                .apis(RequestHandlerSelectors.basePackage("com.demo.controller"))
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
 //                .paths(PathSelectors.regex("/user.*"))
                 .paths(PathSelectors.any())
                 .build()
@@ -48,8 +48,8 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("XXXXX系统平台接口文档")
-                .description("提供子模块1/子模块2/子模块3的文档, 更多请关注公众号: 随行享阅")
+                .title("demo接口文档")
+                .description("提供文档")
                 .termsOfServiceUrl("https://xingtian.github.io/trace.github.io/")
                 .version("1.0")
                 .build();
