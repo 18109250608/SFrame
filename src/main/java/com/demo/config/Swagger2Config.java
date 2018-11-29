@@ -50,7 +50,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("demo接口文档")
                 .description("提供文档")
-                .termsOfServiceUrl("https://xingtian.github.io/trace.github.io/")
+                .termsOfServiceUrl("http://localhost:8090/swagger-ui.html")
                 .version("1.0")
                 .build();
     }
