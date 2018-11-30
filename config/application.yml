@@ -115,21 +115,21 @@ jwt:
 #      data: DEBUG
 #      security: DEBUG
 
-swagger:
+swagger2:
   # 公共信息
   enabled: true
   title: java整合demo
   description: 一个Swagger测试项目
   version: 0.1-SNAPSHOT
   # 许可证及服务条款信息
-  license:
-  licenseUrl:
-  termsOfServiceUrl:
+#  license:
+#  licenseUrl:
+  termsOfServiceUrl: http://localhost:8090/swagger-ui.html
   contact:
     name: mzh
-    url:
-    email: xxx@gmail.com
-  basePackage: com.demo
+    url: http://localhost:8090/swagger-ui.html
+    email: mzh@gmail.com
+  basePackage: com.demo.controller
 #  globalOperationParameters[0]:
 #    name: TOKEN
 #    description: 鉴权
@@ -146,12 +146,12 @@ swagger:
 #      code: 500
 #      message: 后端错误
 #      modelRef: ERROR
-#  docket:
-#    apiForMe:
-#      title: Myself
-#      description: 开放给自己的接口
-#      base-path: /api/myself/**
-#    apiForOthers:
-#      title: Others
-#      description: 作为其他人的接口
-#      base-path: /api/others/**
+  docket:
+    apiForMe:
+      title: Myself
+      description: 开放给自己的接口
+      basePath: /api/myself/**
+    apiForOthers:
+      title: Others
+      description: 作为其他人的接口
+      basePath: /api/others/**

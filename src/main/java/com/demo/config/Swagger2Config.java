@@ -1,14 +1,14 @@
 package com.demo.config;
 
-import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -17,21 +17,42 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
-//    @Value("${swagger2.enable}") private boolean enable;
 
-//    @Bean("UserApis")
+    @Value("${swagger2.enabled}")
+    private boolean enable;
+
+    @Value("${swagger2.title}")
+    private String title;
+
+    @Value("${swagger2.description}")
+    private String description;
+
+    @Value("${swagger2.version}")
+    private String version;
+
+    @Value("${swagger2.contact.name}")
+    private String contactName;
+
+    @Value("${swagger2.basePackage}")
+    private String basePackage;
+
+    @Value("${swagger2.termsOfServiceUrl}")
+    private String termsOfServiceUrl;
+
+
+//    @Bean("BookApis")
     @Bean
     public Docket userApis() {
         return new Docket(DocumentationType.SWAGGER_2)
-//                .groupName("用户模块")
+                .groupName("书籍模块")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage(basePackage))
 //                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-//                .paths(PathSelectors.regex("/user.*"))
+//                .paths(PathSelectors.regex("/book.*"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
-                .enable(true);
+                .enable(enable);
     }
 
 //    @Bean("CustomApis")
@@ -47,11 +68,17 @@ public class Swagger2Config {
 //    }
 
     private ApiInfo apiInfo() {
+        Contact contact = new Contact(contactName, "", "");
+        System.out.println(contact);
+
         return new ApiInfoBuilder()
-                .title("demo接口文档")
-                .description("提供文档")
-                .termsOfServiceUrl("http://localhost:8090/swagger-ui.html")
-                .version("1.0")
+                .title(title)
+                .description(description)
+                .termsOfServiceUrl(termsOfServiceUrl)
+                .version(version)
+                .contact(contact)
                 .build();
     }
+
+
 }

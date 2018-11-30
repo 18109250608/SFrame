@@ -10,7 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @SpringBootApplication
-@EnableSwagger2
+//@EnableSwagger2
 //@ComponentScan(basePackages = {"com.demo.repository"})
 @MapperScan("com.demo.mapper")
 public class DemoApplication {
