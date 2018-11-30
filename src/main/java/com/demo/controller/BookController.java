@@ -22,7 +22,7 @@ import static java.lang.Integer.parseInt;
 
 @Controller
 @RequestMapping("/book")
-@Api(value="书籍接口",tags={"对书籍的相关操作"})
+@Api(value="书籍接口",tags={"书籍相关API"})
 public class BookController {
     @Autowired
     private BookMapper bm;
@@ -39,7 +39,7 @@ public class BookController {
     }
 
     @ApiOperation(value="获取书籍详细信息", notes="根据书籍的id来获取书籍详细信息")
-    @ApiImplicitParam(name = "id", value = "书籍ID", required = true, paramType = "query", dataType = "Integer")
+    @ApiImplicitParam(name = "id", value = "书籍ID", required = true, paramType = "query", dataType = "Long")
     @RequestMapping(value = "/getBookInfoById", method = RequestMethod.GET)
     @ResponseBody
     public Book getBookInfoById(@RequestParam(value = "id", required = true) Integer id){
@@ -76,8 +76,8 @@ public class BookController {
     @ApiOperation(value="按类别查询书籍", notes="按类别查询书籍")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "书籍类别名称", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "current", value = "当前页编号（从1开始的编号）", required = false, dataType = "Integer", defaultValue = "1"),
-            @ApiImplicitParam(name = "count", value = "每页个数", required = false, dataType = "Integer", defaultValue = "10")
+            @ApiImplicitParam(name = "current", value = "当前页编号（从1开始的编号）", required = false, dataType = "Long", defaultValue = "1"),
+            @ApiImplicitParam(name = "count", value = "每页个数", required = false, dataType = "Long", defaultValue = "10")
     })
     @RequestMapping(value = "/getBookByCategory", method = RequestMethod.GET)
     @ResponseBody

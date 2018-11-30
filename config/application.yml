@@ -106,7 +106,7 @@ jwt:
   route:
     authentication:
       path: auth
-      refresh: refresh
+      refresh: "auth/refresh"
       register: "auth/register"
 
 #logging:

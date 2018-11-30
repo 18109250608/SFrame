@@ -3,6 +3,10 @@ package com.demo.auth;
 import com.demo.entity.User;
 import com.demo.secruity.JwtAuthenticationRequest;
 import com.demo.secruity.JwtAuthenticationResponse;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +19,7 @@ import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@Api(value="权限申请与认证",tags={"权限申请与认证"})
 public class AuthController {
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -22,6 +27,11 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+
+    @ApiOperation(value="获得用户Token", notes="获得用户Token")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authenticationRequest", value = "用户名与密码", required = true, dataType = "JwtAuthenticationRequest")
+    })
     @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(
             @RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException{
@@ -32,6 +42,8 @@ public class AuthController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
+
+    @ApiOperation(value="刷新Token", notes="刷新Token")
     @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
     public ResponseEntity<?> refreshAndGetAuthenticationToken(
             HttpServletRequest request) throws AuthenticationException {
@@ -49,6 +61,11 @@ public class AuthController {
         }
     }
 
+
+    @ApiOperation(value="用户申请", notes="用户申请")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "addedUser", value = "用户实体user，除去id", required = true, dataType = "User")
+    })
     @RequestMapping(value = "${jwt.route.authentication.register}", method = RequestMethod.POST)
     public User register(@RequestBody User addedUser) throws AuthenticationException{
         return authService.register(addedUser);
