@@ -35,7 +35,7 @@ public class BookController {
     @ResponseBody
     public String toBookIndex(HttpServletRequest request, Model model){
 
-        return "Hi, I'm Book! Nice to meet you~ 合作愉快。我创建了一个分支呢，你看看";
+        return "Hi, I'm Book! Nice to meet you~ 合作愉快。我创建了一个分支呢，你看看！我又在测试gitblit了";
     }
 
     @ApiOperation(value="获取书籍详细信息", notes="根据书籍的id来获取书籍详细信息")
