@@ -26,6 +26,7 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
+
     // REST API
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.0.RELEASE'
     // 关系型数据库mysql
@@ -62,4 +63,6 @@ dependencies {
 
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
+
 }
