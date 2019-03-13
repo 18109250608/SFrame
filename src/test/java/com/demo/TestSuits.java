@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({BookMapperTest.class, BookControllerTest.class,
         StudentMapperTest.class})
 public class TestSuits {
-
+//    leilei
     //不用写代码，只需要注解即可
 }
 
