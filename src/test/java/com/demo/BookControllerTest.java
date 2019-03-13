@@ -37,7 +37,7 @@ public class BookControllerTest extends DemoApplicationTests {
     @Test
     public void hello() throws Exception {
         String url = "/book/test";//访问url
-        String expectedResult = "Hi, I'm Book!886 mzh来啦    ";//预期返回结果
+        String expectedResult = "Hi, I'm Book!886 mzh来啦  雷蕾  ";//预期返回结果
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(url)
                                                                 .accept(MediaType.APPLICATION_JSON))
                                     .andReturn();
